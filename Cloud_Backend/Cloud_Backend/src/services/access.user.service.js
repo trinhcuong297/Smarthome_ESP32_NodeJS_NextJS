@@ -10,7 +10,7 @@ class accessUserService {
     // Check email
     const foundUser = await findUserByEmail({ email });
     if (!foundUser) {
-      throw new ErrorResponse("User not registed", 403);
+      throw new ErrorResponse(`User ${email} not registed`, 403);
     }
 
     // Check password

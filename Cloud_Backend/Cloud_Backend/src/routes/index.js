@@ -17,7 +17,7 @@ ApplicationRouter
   .use("/v1/api/device", deviceRouter);
 
 ControlServiceRouter
-  .use(asyncMiddlewareHandler(AuthenticationHeader))
+  // .use(asyncMiddlewareHandler(AuthenticationHeader))
   .use("/v1/api/device", deviceRouter);
 
 export {ApplicationRouter, ControlServiceRouter};

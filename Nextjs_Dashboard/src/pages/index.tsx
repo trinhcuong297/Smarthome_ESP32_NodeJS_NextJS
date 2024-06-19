@@ -28,6 +28,8 @@ import {
   ResizablePanel,
   ResizablePanelGroup,
 } from "@/components/ui/resizable"
+import SwitchDashboard from "@/components/Switch_Dashboard";
+import { RemoveDevice } from "@/components/RemoveDevice";
 
 export default function Home() {
   const {userAttributes, setUserAttributes, userSession, setUserSession} = useUserDataContext();
@@ -63,9 +65,25 @@ export default function Home() {
                         </DialogHeader>
                       </DialogContent>
                     </Dialog>
+                    <Dialog>
+                      <DialogTrigger>
+                        <Button className="bg-red-500">Remove device</Button>
+                      </DialogTrigger>
+                      <DialogContent>
+                        <DialogHeader>
+                          <DialogTitle>
+                            Remove device
+                          </DialogTitle>
+                          <DialogDescription>
+                            Scan QR code on your device / Enter your device ID
+                          </DialogDescription>
+                          <RemoveDevice />
+                        </DialogHeader>
+                      </DialogContent>
+                    </Dialog>
                   </div>
                 </div>
-                <Tabs defaultValue="overview" className="space-y-4">
+                <Tabs defaultValue="switch" className="space-y-4">
                   <TabsList>
                     <TabsTrigger value="overview">
                       Overview
@@ -157,64 +175,7 @@ export default function Home() {
                     </div>
                   </TabsContent>
                   <TabsContent value="switch" className="space-y-4">
-                  <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                      <Card className="hover:cursor-pointer active:bg-slate-200">
-                        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                          <CardTitle className="text-sm font-medium">
-                            Device 1a2a3aaa
-                          </CardTitle>
-                          <PlugZap2Icon className="h-4 w-4"/>
-                        </CardHeader>
-                        <CardContent className="flex justify-between">
-                          <p className="text-xs text-muted-foreground">
-                          Last modify: 11:02 6/17/2024
-                          </p>
-                          <Switch/>
-                        </CardContent>
-                      </Card>
-                      <Card className="hover:cursor-pointer active:bg-slate-200">
-                        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                          <CardTitle className="text-sm font-medium">
-                            Device 1a2a3aaa
-                          </CardTitle>
-                          <PlugZap2Icon className="h-4 w-4"/>
-                        </CardHeader>
-                        <CardContent className="flex justify-between">
-                          <p className="text-xs text-muted-foreground">
-                          Last modify: 11:02 6/17/2024
-                          </p>
-                          <Switch/>
-                        </CardContent>
-                      </Card>
-                      <Card className="hover:cursor-pointer active:bg-slate-200">
-                        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                          <CardTitle className="text-sm font-medium">
-                            Device 1a2a3aaa
-                          </CardTitle>
-                          <PlugZap2Icon className="h-4 w-4"/>
-                        </CardHeader>
-                        <CardContent className="flex justify-between">
-                          <p className="text-xs text-muted-foreground">
-                          Last modify: 11:02 6/17/2024
-                          </p>
-                          <Switch/>
-                        </CardContent>
-                      </Card>
-                      <Card className="hover:cursor-pointer active:bg-slate-200">
-                        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                          <CardTitle className="text-sm font-medium">
-                            Device 1a2a3aaa
-                          </CardTitle>
-                          <PlugZap2Icon className="h-4 w-4"/>
-                        </CardHeader>
-                        <CardContent className="flex justify-between">
-                          <p className="text-xs text-muted-foreground">
-                          Last modify: 11:02 6/17/2024
-                          </p>
-                          <Switch/>
-                        </CardContent>
-                      </Card>
-                    </div>
+                    <SwitchDashboard/>
                   </TabsContent>
                   <TabsContent value="temperature" className="space-y-4">
                     <ResizablePanelGroup direction="horizontal" className="h-full">

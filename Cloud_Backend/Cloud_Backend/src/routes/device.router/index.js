@@ -8,6 +8,7 @@ deviceRouter
   .post("/claim", asyncMiddlewareHandler(deviceController.claimDeviceInfo))
   .get("/alldevice", asyncMiddlewareHandler(deviceController.getAllDevices))
   .get("/onedevice/:id", asyncMiddlewareHandler(deviceController.getDeviceInfo))
-  .patch("/control/:id", asyncMiddlewareHandler(deviceController.controlDevice));
+  .patch("/control/:id", asyncMiddlewareHandler(deviceController.controlDevice))
+  .post("/delete", asyncMiddlewareHandler(deviceController.deleteDevice));
 
 export default deviceRouter;

@@ -26,7 +26,7 @@ const FormSchema = z.object({
   }),
 })
 
-export function ClaimDevice() {
+export function RemoveDevice() {
   const {userAttributes, setUserAttributes, userSession, setUserSession} = useUserDataContext();
   const [loading, setLoading] = useState(false);
   const form = useForm<z.infer<typeof FormSchema>>({
@@ -38,24 +38,24 @@ export function ClaimDevice() {
 
   async function onSubmit(data: z.infer<typeof FormSchema>): Promise<any> {
     toast({
-      title: `Claiming device : ${data.deviceId}`,
+      title: `Removing device : ${data.deviceId}`,
       description: ""
     })
     try
     {
       setLoading(true);
-      const response: any = await fetch(`http://localhost:3005/v1/api/device/claim`,
+      const response: any = await fetch(`http://localhost:3005/v1/api/device/delete`,
         {
             method: "POST",
             headers: {
                 "Access-Control-Allow-Origin": "*",
-                "CLIENT_ID": userSession.userId,
-                "ACCESS_TOKEN": userSession.token,
+                "CLIENT_ID": userSession?.userId,
+                "ACCESS_TOKEN": userSession?.token,
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                "deviceID": data.deviceId,
-                "userID": userSession.userId,
+                "deviceID": data?.deviceId,
+                "userID": userSession?.userId,
             })
         }
     );
@@ -63,7 +63,7 @@ export function ClaimDevice() {
       if (response.ok)
       {
         toast({
-          title: `Claim device ${data.deviceId} successfully`,
+          title: `Remove device ${data?.deviceId} successfully`,
           className: "bg-emerald-300"
         })
       }
@@ -75,7 +75,7 @@ export function ClaimDevice() {
     {
       console.log(err)
       toast({
-        title: `Failed to claim device ${data.deviceId}`,
+        title: `Failed to remove device ${data?.deviceId}`,
         className: "bg-red-500 text-white"
       })
     }

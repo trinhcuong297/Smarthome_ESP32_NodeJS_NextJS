@@ -147,15 +147,15 @@ class DeviceService {
   };
 
   findDeviceandUpdate = async (deviceID, messageUpdate) => {
-    console.log(deviceID);
-    console.log(messageUpdate);
+    console.log("deviceID:",deviceID);
+    console.log("messageUpdate:",messageUpdate);
     try {
       const findDeviceandUpdate = await DeviceModel.findOneAndUpdate(
         {
-          deviceID: deviceID,
+          deviceID: messageUpdate.address,
         },
         {
-          value: parseInt(messageUpdate.value),
+          value: { state: parseInt(messageUpdate.value)},
         },
         { new: true }
       );

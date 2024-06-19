@@ -5,8 +5,8 @@ POST {{url_dev}}/manufactor/signup
 Content-Type: application/json
 
 {
-    "name":"Gateway",
-    "deviceID":"0x0002",
+    "name":"Kitchen",
+    "deviceID":"0xC001",
     "type": 1
 }
 

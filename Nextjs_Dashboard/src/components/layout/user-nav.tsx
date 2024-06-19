@@ -12,27 +12,10 @@ import {
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
 import { useUserDataContext } from '@/context/UserDataContext';
-import { fetchUserAttributes, getCurrentUser, signOut } from 'aws-amplify/auth';
 import { CircleUserRoundIcon, LoaderCircle, LogOutIcon } from 'lucide-react';
-import { useEffect, useState } from 'react';
-
-const fetchAttribute = async (setUserAttributes: any) => {
-  const user = await fetchUserAttributes();
-  await setUserAttributes(user);
-};
-
-const fetchSession = async (setUserSession: any) => {
-  const user = await getCurrentUser();
-  await setUserSession(user);
-};
 
 export function UserNav() {
   const {userAttributes, setUserAttributes, userSession, setUserSession} = useUserDataContext();
-
-  useEffect(() => {
-    fetchAttribute(setUserAttributes);
-    fetchSession(setUserSession);
-  },[setUserAttributes, setUserSession])
 
   if (userAttributes) {
     return (
@@ -75,7 +58,7 @@ export function UserNav() {
             </DropdownMenuItem>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
-          <DropdownMenuItem onClick={async () => { await signOut()}}>
+          <DropdownMenuItem onClick={async () => { setUserSession(null) }}>
             Log out
             <DropdownMenuShortcut><LogOutIcon /></DropdownMenuShortcut>
           </DropdownMenuItem>
@@ -108,7 +91,7 @@ export function UserNav() {
             </DropdownMenuItem>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
-          <DropdownMenuItem onClick={async () => { await signOut()}}>
+          <DropdownMenuItem onClick={async () => { await setUserSession(null) }}>
             Log out
             <DropdownMenuShortcut><LogOutIcon /></DropdownMenuShortcut>
           </DropdownMenuItem>
