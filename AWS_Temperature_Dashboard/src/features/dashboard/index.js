@@ -135,17 +135,10 @@ function Dashboard(){
             </div>
 
             <div className="grid lg:grid-cols-2 mt-4 grid-cols-1 gap-6">
-                <LineChart />
                 <UserChannels data={dataUpdateHead} title={"Temperature Sensor"} colored={1}/>
-            </div>
-            
-            <div className="grid lg:grid-cols-1 mt-10 grid-cols-1 gap-6">
                 <UserChannels data={data} title={"Data log"} colored={0}/>
             </div>
         
-            <div className="grid lg:grid-cols-2 mt-4 grid-cols-1 gap-6">
-                <DoughnutChart />
-            </div>
         </>
     )
 }
