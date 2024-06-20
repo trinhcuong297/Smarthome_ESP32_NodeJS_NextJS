@@ -44,7 +44,7 @@ export function ClaimDevice() {
     try
     {
       setLoading(true);
-      const response: any = await fetch(`http://localhost:3005/v1/api/device/claim`,
+      const response: any = await fetch(`https://smarthome-esp32-nodejs-nextjs.onrender.com/v1/api/device/claim`,
         {
             method: "POST",
             headers: {

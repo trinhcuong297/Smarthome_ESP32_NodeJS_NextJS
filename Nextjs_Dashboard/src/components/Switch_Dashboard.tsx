@@ -13,7 +13,7 @@ import { useUserDataContext } from "@/context/UserDataContext";
 
 
 const getOneDevice = async (deviceID : any, userSession: any) => {
-    const response = await fetch(`http://localhost:3005/v1/api/device/onedevice/${deviceID}`,
+    const response = await fetch(`https://smarthome-esp32-nodejs-nextjs.onrender.com/v1/api/device/onedevice/${deviceID}`,
         {
             method: "GET",
             headers: {
@@ -32,7 +32,7 @@ const getOneDevice = async (deviceID : any, userSession: any) => {
 }
 
 const getAllDevice = async (setAllDevice: any, userSession: any) => {
-    const response = await fetch("http://localhost:3005/v1/api/device/alldevice",
+    const response = await fetch("https://smarthome-esp32-nodejs-nextjs.onrender.com/v1/api/device/alldevice",
         {
             method: "GET",
             headers: {
@@ -65,7 +65,7 @@ export default function SwitchDashboard ()
 
     const controlDevice = async (userSession: any, deviceID: any, value: any) => {
         setLoading(true)
-        const response = await fetch(`http://localhost:3005/v1/api/device/control/${deviceID}`,
+        const response = await fetch(`https://smarthome-esp32-nodejs-nextjs.onrender.com/v1/api/device/control/${deviceID}`,
             {
                 method: "PATCH",
                 headers: {

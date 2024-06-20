@@ -44,7 +44,7 @@ export function RemoveDevice() {
     try
     {
       setLoading(true);
-      const response: any = await fetch(`http://localhost:3005/v1/api/device/delete`,
+      const response: any = await fetch(`https://smarthome-esp32-nodejs-nextjs.onrender.com/v1/api/device/delete`,
         {
             method: "POST",
             headers: {
