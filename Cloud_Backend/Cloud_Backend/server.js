@@ -1,13 +1,13 @@
-import { configDotenv } from "dotenv";
+// import { configDotenv } from "dotenv";
 import app from "./src/application.service.app.js";
 import process from "process";
 import followingService from "./src/following.service.app.js";
 import controlService from "./src/control.service.app.js";
-configDotenv();
+// configDotenv();
 
-const port = process.env.PORT || 3001;
-const following_servicePort = process.env.FOLLOWING_SERVICE_PORT || 3002;
-const control_servicePort = process.env.CONTROL_SERVICE_PORT || 3003;
+const port = 3005 || 3001;
+const following_servicePort = 3007 || 3002;
+const control_servicePort = 5000 || 3003;
 
 
 const server_1 = app.listen(port, () => {

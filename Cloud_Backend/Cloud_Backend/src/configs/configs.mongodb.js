@@ -1,10 +1,10 @@
 const dev = {
-    username: process.env.DEV_MONGODB_USERNAME || 'trinhcuong297',
-    password: process.env.DEV_MONGODB_PASSWORD || 'caocuong297',
+    username: 'trinhcuong297',
+    password: 'caocuong297',
 }
 const prod = {
-    username: process.env.DEV_MONGODB_USERNAME || 'trinhcuong297',
-    password: process.env.DEV_MONGODB_PASSWORD || 'caocuong297',
+    username: 'trinhcuong297',
+    password: 'caocuong297',
 }
 
 

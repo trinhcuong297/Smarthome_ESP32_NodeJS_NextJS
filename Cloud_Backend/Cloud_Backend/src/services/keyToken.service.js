@@ -1,8 +1,8 @@
-import { configDotenv } from "dotenv";
+// import { configDotenv } from "dotenv";
 import keyTokenModel from "../models/keyToken.model.js";
 import jwt from "jsonwebtoken";
 import ErrorResponse from "../helpers/errorHandle.response.js";
-configDotenv();
+// configDotenv();
 
 const updateAccessToken = async (userId, accessToken) => {
   const filter = {
@@ -27,8 +27,8 @@ const updateAccessToken = async (userId, accessToken) => {
 };
 
 const signTokenID = async (userID) => {
-  return jwt.sign({ userId: userID }, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_EXPIRES,
+  return jwt.sign({ userId: userID }, "project-2-light-control-system", {
+    expiresIn: "2d",
   });
 };
 

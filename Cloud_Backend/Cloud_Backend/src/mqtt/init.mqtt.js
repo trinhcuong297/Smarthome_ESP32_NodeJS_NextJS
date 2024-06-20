@@ -1,12 +1,12 @@
 import mqtt from "mqtt";
-import dotenv from "dotenv";
+// import dotenv from "dotenv";
 import deviceService from "../services/device.service.js";
 
-dotenv.config();
+// dotenv.config();
 var mqttClient;
 
 function mqttBrokerInit() {
-  const hostURL = `mqtt://${process.env.MQTT_HOST}:${process.env.MQTT_PORT}`;
+  const hostURL = `mqtt://white-dev.aithings.vn:1883`;
   const options = {
     keepalive: 60,
     protocolID: "MQTT",

@@ -19,7 +19,7 @@ export const AuthenticationHeader = async (req, res, next) => {
   // verify token
   const decoded = await promisify(jwt.verify)(
     accessToken,
-    process.env.JWT_SECRET
+    "project-2-light-control-system"
   );
   console.log(decoded);
 
