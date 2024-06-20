@@ -80,13 +80,13 @@ export default function SwitchDashboard ()
         await setTimeout(async ()=>{
             await getAllDevice(setAllDevice, userSession);
             await setLoading(false)
-        }, [1000])
+        }, 1000)
         
     }
     // useEffect(() => {
     //     setInterval(() => {
     //         getAllDevice(setAllDevice, userSession);
-    //     },[3000])
+    //     },3000)
     // },[])
 
     return (
