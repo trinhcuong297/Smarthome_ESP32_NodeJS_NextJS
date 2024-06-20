@@ -11,4 +11,4 @@ const prod = {
 const config = { dev, prod }
 const env = process.env.NODE_ENV || 'dev'
 
-export const { username, password } = config[env]
+export const { username, password } = dev
