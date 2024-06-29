@@ -23,7 +23,15 @@ class ManufactorController {
 
   deleteDevice = async (req, res, next) => {
     console.log("[DELETE] Device ID ::", req.body?.ID);
-    return res.status(200).json(await ManufactorService.deleteDevice(req.body?.ID));
+    return res
+      .status(200)
+      .json(await ManufactorService.deleteDevice(req.body?.ID));
+  };
+
+  signupSensorInfor = async (req, res, next) => {
+    console.log("POST:: SENSOR INFOR");
+    const mac = req.body.mac;
+    return res.status(200).json(await ManufactorService.signupSensor(mac));
   };
 }
 

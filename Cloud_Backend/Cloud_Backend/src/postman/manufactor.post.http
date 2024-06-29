@@ -28,3 +28,11 @@ Content-Type: application/json
 {
     "ID": "6620b9b3603d304e2e79873d"
 }
+
+### Manufature Sign up sensor
+POST http://localhost:3005/v1/api/manufactor/device/sensor/here
+Content-Type: application/application/json
+
+{
+    "mac":"D8BC38E41AF2"
+}

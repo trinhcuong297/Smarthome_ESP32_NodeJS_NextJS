@@ -1,6 +1,7 @@
 import mqtt from "mqtt";
 // import dotenv from "dotenv";
 import deviceService from "../services/device.service.js";
+import SensorModel from "../models/sensor.model.js";
 
 // dotenv.config();
 var mqttClient;
@@ -31,6 +32,10 @@ function mqttBrokerInit() {
     console.log(
       "Received Message: " + message.toString() + "\nOn topic: " + topic
     );
+    if(topic === '/device/sensor'){
+       const sensorPayload = JSON.parse(message.toString());
+       await deviceService.sensorUpdate(sensorPayload);
+    }
     let partID = topic.split("ID=");
     let deviceID = "0x" + partID[1];
     const messageUpdate = JSON.parse(message.toString());

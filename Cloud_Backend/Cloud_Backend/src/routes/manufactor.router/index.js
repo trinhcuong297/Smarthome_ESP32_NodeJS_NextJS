@@ -10,5 +10,6 @@ manufactorRouter
   .get("/onedevice", asyncMiddlewareHandler(manufactorController.getDeviceInfo))
   .post("/assigndevice", asyncMiddlewareHandler(manufactorController.assignDevice))
   .delete("/deletedevice", asyncMiddlewareHandler(manufactorController.deleteDevice))
+  .post("/sensor", asyncMiddlewareHandler(manufactorController.signupSensorInfor))
 
 export default manufactorRouter;

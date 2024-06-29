@@ -11,5 +11,6 @@ instanceMongoDB; // Connect MongoDB
 //init MQTT*********************************************
 mqttBrokerInit(); // connect to MQTT broker
 subscribeTopic("/device/sub/+", 1);
+subscribeTopic("/device/sensor",1);
 
 export default followingService;

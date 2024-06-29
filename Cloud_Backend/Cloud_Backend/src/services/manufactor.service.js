@@ -1,5 +1,6 @@
 import ErrorResponse from "../helpers/errorHandle.response.js";
 import DeviceModel from "../models/device.model.js";
+import SensorModel from "../models/sensor.model.js";
 import publishTopic from "../mqtt/publish.mqtt/index.js";
 
 const findDeviceID = async (deviceID) => {
@@ -7,7 +8,7 @@ const findDeviceID = async (deviceID) => {
 };
 
 const findByDeviceID = async (deviceID) => {
-  return await DeviceModel.findOne({ID: deviceID});
+  return await DeviceModel.findOne({ ID: deviceID });
 };
 
 const DeleteDevicebyID = async (deviceID) => {
@@ -23,10 +24,12 @@ class ManufactorService {
         value = { state: 0 };
         break;
       default:
-        throw new ErrorResponse("Type doesn't exist",404)
+        throw new ErrorResponse("Type doesn't exist", 404);
     }
     // Check device exit?
-    const holderDevice = await DeviceModel.findOne({ deviceID: deviceID }).lean({});
+    const holderDevice = await DeviceModel.findOne({ deviceID: deviceID }).lean(
+      {}
+    );
     if (holderDevice) {
       console.log(holderDevice);
       throw new ErrorResponse("Device exited!", 403);
@@ -72,31 +75,34 @@ class ManufactorService {
     };
   };
 
-  assignDevice = async ({deviceID, userID}) => {
+  assignDevice = async ({ deviceID, userID }) => {
     // Check device exit?
-    const holderDevice = await findByDeviceID(deviceID)
+    const holderDevice = await findByDeviceID(deviceID);
     if (!holderDevice) {
       throw new ErrorResponse("Device doesn't exited!", 403);
     }
     // Check user exit?
-    const ownUser = await UserModel.findById(userID);   
+    const ownUser = await UserModel.findById(userID);
     if (!ownUser) {
       throw new ErrorResponse("User doesn't exited!", 403);
     }
     // Check device in user
-    if (ownUser.device.indexOf(deviceID) !== -1){
+    if (ownUser.device.indexOf(deviceID) !== -1) {
       throw new ErrorResponse("Device already join!", 409);
     }
     // Push device
-    let a = ownUser.device
-    a.push(deviceID)
+    let a = ownUser.device;
+    a.push(deviceID);
 
-    const ownUserUpdate = await UserModel.findByIdAndUpdate(userID, {
-      device : a
-    },
-    {
-      new: true
-    })
+    const ownUserUpdate = await UserModel.findByIdAndUpdate(
+      userID,
+      {
+        device: a,
+      },
+      {
+        new: true,
+      }
+    );
     if (!ownUserUpdate) {
       throw new ErrorResponse("Couldn't claim device", 500);
     }
@@ -115,10 +121,24 @@ class ManufactorService {
     if (!deviceWillDelete) {
       throw new Error("Can't delete this device", 404);
     }
-    console.log("Hello")
+    console.log("Hello");
     return {
       status: "success",
       deviceDelete: deviceWillDelete,
+    };
+  };
+  signupSensor = async (Infor) => {
+    console.log(Infor);
+    const sensorExist = await SensorModel.findOne({ mac: Infor });
+    if (sensorExist) {
+      throw new ErrorResponse("This mac register before", 404);
+    }
+    const updateSensor = await SensorModel.create({ mac: Infor });
+    if (!updateSensor) {
+      throw new ErrorResponse("Cannot register for new sensor", 404);
+    }
+    return {
+      updateSensor,
     };
   };
 }

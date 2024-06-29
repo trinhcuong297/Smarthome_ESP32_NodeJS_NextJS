@@ -3,6 +3,7 @@ import publishTopic from "../mqtt/publish.mqtt/index.js";
 import DeviceModel from "../models/device.model.js";
 import UserModel from "../models/user.model.js";
 import getInfoData from "../utils/index.js";
+import SensorModel from "../models/sensor.model.js";
 
 const findByDeviceID = async (deviceID) => {
   return await DeviceModel.findOne({ ID: deviceID });
@@ -118,7 +119,6 @@ class DeviceService {
 
   // Coding convention
   controlDevice = async ({ deviceID, value }) => {
-
     const deviceControl = await DeviceModel.findOne({ deviceID: deviceID });
 
     if (!deviceControl) {
@@ -131,7 +131,7 @@ class DeviceService {
       address: deviceID,
       value: value,
     };
-    console.log("payload :: ",payload);
+    console.log("payload :: ", payload);
 
     const ID = String(deviceControl.deviceID.replace(/^0x*/, ""));
     console.log(ID);
@@ -147,15 +147,15 @@ class DeviceService {
   };
 
   findDeviceandUpdate = async (deviceID, messageUpdate) => {
-    console.log("deviceID:",deviceID);
-    console.log("messageUpdate:",messageUpdate);
+    console.log("deviceID:", deviceID);
+    console.log("messageUpdate:", messageUpdate);
     try {
       const findDeviceandUpdate = await DeviceModel.findOneAndUpdate(
         {
           deviceID: messageUpdate.address,
         },
         {
-          value: { state: parseInt(messageUpdate.value)},
+          value: { state: parseInt(messageUpdate.value) },
         },
         { new: true }
       );
@@ -165,6 +165,23 @@ class DeviceService {
       console.log("success update");
     } catch (err) {
       console.log(err);
+    }
+  };
+
+  sensorUpdate = async (sensorPayload) => {
+
+    const sensor = await SensorModel.findOneAndUpdate(
+      {
+        mac: sensorPayload.MAC,
+      },
+      { temperature: sensorPayload.temperature },
+      { new: true }
+    );
+    if (!sensor) {
+      console.log("Cannot get value of sensor");
+      return;
+    } else {
+      console.log("Update temperature successfully");
     }
   };
 
