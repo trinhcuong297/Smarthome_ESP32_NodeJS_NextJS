@@ -185,6 +185,11 @@ class DeviceService {
     }
   };
 
+  getSensorData = async () => {
+    const sensor = await SensorModel.find();
+    console.log(await sensor);
+    return {"all": sensor};
+  }
   // const worker = new Worker("./src/services/multithread.service.js");
   // worker.on("message", async (message) => {
 }

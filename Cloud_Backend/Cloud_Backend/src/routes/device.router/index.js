@@ -9,6 +9,7 @@ deviceRouter
   .get("/alldevice", asyncMiddlewareHandler(deviceController.getAllDevices))
   .get("/onedevice/:id", asyncMiddlewareHandler(deviceController.getDeviceInfo))
   .patch("/control/:id", asyncMiddlewareHandler(deviceController.controlDevice))
-  .post("/delete", asyncMiddlewareHandler(deviceController.deleteDevice));
-
+  .post("/delete", asyncMiddlewareHandler(deviceController.deleteDevice))
+  .get("/sensor", asyncMiddlewareHandler(deviceController.sensorDevice));
+  
 export default deviceRouter;

@@ -40,6 +40,11 @@ class DeviceController {
       })
     );
   };
+
+  sensorDevice = async (req, res, next) => {
+    console.log("[GET] device :: sensor");
+    return res.status(200).json(await DeviceService.getSensorData());
+  };
 }
 
 export default new DeviceController();
