@@ -8,8 +8,7 @@ import { useEffect, useState } from "react";
 import { useUserDataContext } from "@/context/UserDataContext";
 
 const getAllSensor = async (setAllSensor: any, userSession: any) => {
-    // const response = await fetch("https://smarthome-esp32-nodejs-nextjs.onrender.com/v1/api/device/sensor",
-    const response = await fetch("http://localhost:3005/v1/api/device/sensor",
+    const response = await fetch("https://smarthome-esp32-nodejs-nextjs.onrender.com/v1/api/device/sensor",
         {
             method: "GET",
             headers: {
