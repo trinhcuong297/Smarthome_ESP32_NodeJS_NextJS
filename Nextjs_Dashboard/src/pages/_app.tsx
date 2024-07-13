@@ -15,10 +15,13 @@ export default function App({ Component, pageProps }: AppProps) {
     <Head>
       <title>Legend - Smart Home System</title>
     </Head>
-      <UserDataProvider>
-          <WebSocketProvider>
-            <Component {...pageProps} />
-          </WebSocketProvider>
-      </UserDataProvider>
+    {/* Data provider */}
+    <UserDataProvider>
+      {/* WebSocket provider */}
+      <WebSocketProvider>
+        {/* Các components khác sẽ đi vào đây */}
+        <Component {...pageProps} />
+      </WebSocketProvider>
+    </UserDataProvider>
   </ThemeProvider>
 }

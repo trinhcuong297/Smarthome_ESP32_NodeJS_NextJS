@@ -11,7 +11,7 @@ import { useEffect, useState } from "react";
 import { useUserDataContext } from "@/context/UserDataContext";
 
 
-
+// Lấy thông tin chi tiết của 1 thiết bị
 const getOneDevice = async (deviceID : any, userSession: any) => {
     const response = await fetch(`https://smarthome-esp32-nodejs-nextjs.onrender.com/v1/api/device/onedevice/${deviceID}`,
         {
@@ -31,6 +31,7 @@ const getOneDevice = async (deviceID : any, userSession: any) => {
         }
 }
 
+// Lấy tất cả thiết bị của người dùng
 const getAllDevice = async (setAllDevice: any, userSession: any) => {
     const response = await fetch("https://smarthome-esp32-nodejs-nextjs.onrender.com/v1/api/device/alldevice",
         {
@@ -54,6 +55,7 @@ const getAllDevice = async (setAllDevice: any, userSession: any) => {
 
 }
 
+// Giao diện điều khiển đèn
 export default function SwitchDashboard ()
 {
     const [allDevice, setAllDevice] = useState([]);
@@ -63,6 +65,8 @@ export default function SwitchDashboard ()
         getAllDevice(setAllDevice, userSession);
     },[setAllDevice, userSession])
 
+
+    // Điều khiển đèn
     const controlDevice = async (userSession: any, deviceID: any, value: any) => {
         setLoading(true)
         const response = await fetch(`https://smarthome-esp32-nodejs-nextjs.onrender.com/v1/api/device/control/${deviceID}`,

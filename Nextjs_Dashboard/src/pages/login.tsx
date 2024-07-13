@@ -41,6 +41,7 @@ export default function Login() {
     },
   })
 
+  // Gọi API đăng nhập
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try
     {
@@ -88,22 +89,24 @@ export default function Login() {
 
   return (
     <>
+      {/* Tiêu đề */}
       <Head>
       <title>Legend - Smart Home System with AWS</title>
       </Head>
       <div className="relative h-screen flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
-      <Link
-        href="/examples/authentication"
-        className={cn(
-          buttonVariants({ variant: 'ghost' }),
-          'absolute right-4 top-4 hidden md:right-8 md:top-8'
-        )}
-      >
-        Login
-      </Link>
+        <Link
+          href="/examples/authentication"
+          className={cn(
+            buttonVariants({ variant: 'ghost' }),
+            'absolute right-4 top-4 hidden md:right-8 md:top-8'
+          )}
+        >
+          Login
+        </Link>
       <div className="relative hidden h-full flex-col bg-muted p-10 text-white lg:flex dark:border-r">
         <Toaster />
 
+          {/* Background gradient */}
         <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-white" />
         <div className="relative z-20 flex items-center text-lg font-medium">
           <Link
@@ -134,6 +137,8 @@ export default function Login() {
               Enter your email below to create your account
             </p>
           </div>
+
+          {/* Form đăng nhập */}
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
               <FormField
@@ -163,6 +168,8 @@ export default function Login() {
               <Button type="submit" className="w-full">Submit</Button>
             </form>
           </Form>
+
+          {/* Agreement */}
           <div className="px-8 text-center text-sm text-muted-foreground">
             By clicking continue, you agree to our{' '}
             <Link
