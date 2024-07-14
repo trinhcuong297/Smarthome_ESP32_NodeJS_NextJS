@@ -2,6 +2,8 @@ import mongoose from "mongoose"
 import { password, username } from "../configs/configs.mongodb.js"
 
 const mongoConnectionString = `mongodb+srv://${username}:${password}@cluster0.ob0weth.mongodb.net/Smarthome`
+
+// Singleton design pattern class to connect to MongoDB
 class Database {
     constructor() {
         this.connect()

@@ -5,7 +5,7 @@ import asyncMiddlewareHandler from "../../services/middleware.service.js"
 const accessRouter = express.Router()
 
 accessRouter
-    .post('/user/signup', asyncMiddlewareHandler(accessController.signup))
-    .post('/user/login', asyncMiddlewareHandler(accessController.login))
+    .post('/user/signup', asyncMiddlewareHandler(accessController.signup))  // Sign up new user
+    .post('/user/login', asyncMiddlewareHandler(accessController.login))    // Login user
 
 export default accessRouter

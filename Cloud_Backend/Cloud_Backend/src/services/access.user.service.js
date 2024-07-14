@@ -6,6 +6,8 @@ import { signTokenID, updateAccessToken } from "./keyToken.service.js";
 import keyTokenModel from "../models/keyToken.model.js";
 
 class accessUserService {
+
+  // Login User
   login = async ({ email, password }) => {
     // Check email
     const foundUser = await findUserByEmail({ email });
@@ -30,6 +32,7 @@ class accessUserService {
     };
   };
 
+  // Signup User
   signup = async ({ name, email, password }) => {
     // Check email exit?
     const holderUser = await UserModel.findOne({ email: email }).lean({});

@@ -5,6 +5,6 @@ import userController from "../../controllers/user.controller.js"
 const userRouter = express.Router()
 
 userRouter
-    .get('/me/info', asyncMiddlewareHandler(userController.getUserInfo))
+    .get('/me/info', asyncMiddlewareHandler(userController.getUserInfo))  // Get user info
 
 export default userRouter

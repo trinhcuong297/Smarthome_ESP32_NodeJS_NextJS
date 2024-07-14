@@ -13,6 +13,7 @@ const findUserByID = async (userId) => {
 export { findUserByEmail, findUserByID };
 
 class UserServices {
+  // Get user info from the user ID in the request headers and return it to the client.
   getUser = async (req) => {
     const userID = await req.get("CLIENT_ID");
     const userFounded = await findUserByID(userID);

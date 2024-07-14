@@ -4,6 +4,7 @@ import process from "process"
 
 const _SECONDS_RECHECK_CONNECTION = 60
 
+// Check if the database is still connected every 60 seconds. If not, attempt to reconnect.
 const checkConnect = () => {
 
     setInterval(() => {

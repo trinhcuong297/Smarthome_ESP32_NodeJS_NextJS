@@ -16,6 +16,7 @@ const DeleteDevicebyID = async (deviceID) => {
 };
 
 class ManufactorService {
+  // Sign up new device ID service
   signupDevice = async ({ name, deviceID, type }) => {
     // Check device type
     let value = null;
@@ -50,6 +51,7 @@ class ManufactorService {
     };
   };
 
+  // Delete device ID service
   getAllDeviceInfo = async () => {
     const devices = await DeviceModel.find();
     if (!devices) {
@@ -61,6 +63,7 @@ class ManufactorService {
     };
   };
 
+  // Get device info by ID service
   getDeviceInfo = async (deviceID) => {
     console.log("device ID:: ", deviceID);
     const deviceFound = await findDeviceID(deviceID);
@@ -75,6 +78,7 @@ class ManufactorService {
     };
   };
 
+  // Update device info service
   assignDevice = async ({ deviceID, userID }) => {
     // Check device exit?
     const holderDevice = await findByDeviceID(deviceID);
@@ -112,6 +116,7 @@ class ManufactorService {
     };
   };
 
+  // Delete device ID service
   deleteDevice = async (deviceID) => {
     const deviceExist = findDeviceID(deviceID);
     if (!deviceExist) {
@@ -127,6 +132,8 @@ class ManufactorService {
       deviceDelete: deviceWillDelete,
     };
   };
+
+  // Sign up new sensor ID service
   signupSensor = async (Infor) => {
     console.log(Infor);
     const sensorExist = await SensorModel.findOne({ mac: Infor });

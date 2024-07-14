@@ -10,14 +10,14 @@ const ApplicationRouter = express.Router();
 const ControlServiceRouter = express.Router();
 
 ApplicationRouter
-  .use("/v1/api/manufactor", manufactorRouter)
-  .use("/v1/api/access", accessRouter)
-  .use(asyncMiddlewareHandler(AuthenticationHeader))
-  .use("/v1/api/user", userRouter)
-  .use("/v1/api/device", deviceRouter);
+  .use("/v1/api/manufactor", manufactorRouter)        // Manufacturer devices routes
+  .use("/v1/api/access", accessRouter)                // Auth routes
+  .use(asyncMiddlewareHandler(AuthenticationHeader))  // Check auth routes
+  .use("/v1/api/user", userRouter)                    // User routes
+  .use("/v1/api/device", deviceRouter);               // Device routes
 
 ControlServiceRouter
   // .use(asyncMiddlewareHandler(AuthenticationHeader))
-  .use("/v1/api/device", deviceRouter);
+  .use("/v1/api/device", deviceRouter);               // Control device routes
 
 export {ApplicationRouter, ControlServiceRouter};
